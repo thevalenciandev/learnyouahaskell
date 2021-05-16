@@ -1,3 +1,6 @@
+import Data.Char
+import Data.List
+
 main :: IO ()
 main = do line <- getLine
           let line' = reverse line
@@ -10,3 +13,6 @@ displayMsg m = do putStrLn $ "You said " ++ m ++ " backwards!"
 main' :: IO ()
 main' = do line <- fmap reverse getLine
            displayMsg line
+
+morefmap = do line <- fmap (intersperse '-'. reverse . map toUpper) getLine
+              putStrLn line
