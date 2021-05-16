@@ -16,3 +16,12 @@ main' = do line <- fmap reverse getLine
 
 morefmap = do line <- fmap (intersperse '-'. reverse . map toUpper) getLine
               putStrLn line
+
+-- Applicative examples
+-- Different ways of using the <*> Applicative function
+-- which "extracts" the fn from a Functor (in this case Monad)
+-- and applies it to the value of the next Functor
+ex1 :: Maybe Integer
+ex1 = Just (*3) <*> Just 3
+ex2 :: Maybe Integer
+ex2 = pure (*3) <*> Just 3
