@@ -45,3 +45,12 @@ ex12 = [(+), (*)] <*> [1,2] <*> [3,4]
 ex13 = (++) <$> ["ha", "heh", "hmm"] <*> ["?", "!", "."]
 -- Now, in applicative style, we get all possible products that are more than 50
 ex14 = filter (>50) $ (*) <$> [1,2,3] <*> [50]
+-- Playing with IO actions now
+-- which is like extracting the values of the actions and gluing them into one
+ex15 = (++) <$> getLine <*> getLine
+-- the above is equivalent to
+ex16 = do a <- getLine
+          b <- getLine
+          return (a++b)
+ex17 = do a <- ex15
+          putStrLn $ "The two lines concatenated turn out to be: " ++ a
