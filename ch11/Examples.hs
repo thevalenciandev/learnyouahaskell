@@ -37,3 +37,11 @@ ex7 = pure (++) <*> Just "Ha" <*> Just "Ha"
 ex8 = (++) <$> Just "johntra" <*> Just "volta"
 -- The above is the equivalent to the following non-applicative example
 ex9 = (++) "johntra" "volta"
+-- Playing with lists now. ex10 is = as ex11
+ex10 = [(*1),(*2),(*3)] <*> [1,2,3]
+ex11 = [f x | f <-[(*1),(*2),(*3)], x <- [1,2,3]]
+-- Multiple args in functions with lists
+ex12 = [(+), (*)] <*> [1,2] <*> [3,4]
+ex13 = (++) <$> ["ha", "heh", "hmm"] <*> ["?", "!", "."]
+-- Now, in applicative style, we get all possible products that are more than 50
+ex14 = filter (>50) $ (*) <$> [1,2,3] <*> [50]
